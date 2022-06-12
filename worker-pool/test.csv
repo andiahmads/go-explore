@@ -1,0 +1,2 @@
+GlobalRank,TldRank,Domain,TLD,RefSubNets,RefIPs,IDN_Domain,IDN_TLD,PrevGlobalRank,PrevTldRank,PrevRefSubNets,PrevRefIPs
+1,1,google.com,com,500748,2580179,google.com,com,1,1,500102,2575121

@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "redis"
+		},
+		{
+			"path": "worker-pool"
+		},
+		{
+			"path": "grpc"
+		}
+	],
+	"settings": {
+		"redisXplorer.config": {
+			"profiles": [
+				{
+					"name": "local-redis",
+					"host": "localhost",
+					"accessKey": "endi",
+					"filter": "*",
+					"port": "6379"
+				}
+			],
+			"scanLimit": 200
+		}
+	}
+}
