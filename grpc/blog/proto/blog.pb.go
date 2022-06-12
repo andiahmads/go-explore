@@ -167,10 +167,26 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BlogServiceClient interface {
+	// Requests the creation for a Blog
+	// Returns Status.INTERNAL if the blog couldn't be created due to Db error
+	// Returns the created Blog's Id
 	CreateBlog(ctx context.Context, in *Blog, opts ...grpc.CallOption) (*BlogId, error)
+	// Requests access to the content of a Blog by sending an Id
+	// Returns Status.NOT_FOUND if the Id doesn't match any Blog in Db
+	// Returns Blog content
 	ReadBlog(ctx context.Context, in *BlogId, opts ...grpc.CallOption) (*Blog, error)
+	// Requests the update of a Blog in Db
+	// Returns Status.NOT_FOUND if the Id doesn't match any Blog in Db
+	// Returns Status.INTERNAL if the blog couldn't be updated due to Db error
+	// Returns Empty
 	UpdateBlog(ctx context.Context, in *Blog, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Requests the delete of a Blog in Db by giving its Id
+	// Returns Status.NOT_FOUND if the Id doesn't match any Blog in Db
+	// Returns Status.INTERNAL if the blog couldn't be deleted due to Db error
+	// Returns Empty
 	DeleteBlog(ctx context.Context, in *BlogId, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Requests access to all the Blogs in Db
+	// Returns stream of Blogs
 	ListBlogs(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (BlogService_ListBlogsClient, error)
 }
 
@@ -252,10 +268,26 @@ func (x *blogServiceListBlogsClient) Recv() (*Blog, error) {
 
 // BlogServiceServer is the server API for BlogService service.
 type BlogServiceServer interface {
+	// Requests the creation for a Blog
+	// Returns Status.INTERNAL if the blog couldn't be created due to Db error
+	// Returns the created Blog's Id
 	CreateBlog(context.Context, *Blog) (*BlogId, error)
+	// Requests access to the content of a Blog by sending an Id
+	// Returns Status.NOT_FOUND if the Id doesn't match any Blog in Db
+	// Returns Blog content
 	ReadBlog(context.Context, *BlogId) (*Blog, error)
+	// Requests the update of a Blog in Db
+	// Returns Status.NOT_FOUND if the Id doesn't match any Blog in Db
+	// Returns Status.INTERNAL if the blog couldn't be updated due to Db error
+	// Returns Empty
 	UpdateBlog(context.Context, *Blog) (*empty.Empty, error)
+	// Requests the delete of a Blog in Db by giving its Id
+	// Returns Status.NOT_FOUND if the Id doesn't match any Blog in Db
+	// Returns Status.INTERNAL if the blog couldn't be deleted due to Db error
+	// Returns Empty
 	DeleteBlog(context.Context, *BlogId) (*empty.Empty, error)
+	// Requests access to all the Blogs in Db
+	// Returns stream of Blogs
 	ListBlogs(*empty.Empty, BlogService_ListBlogsServer) error
 }
 
