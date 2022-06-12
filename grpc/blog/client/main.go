@@ -1,9 +1,9 @@
 package main
 
 import (
-	"context"
 	"log"
 
+	"grpc/blog/client/service"
 	pb "grpc/blog/proto"
 
 	"google.golang.org/grpc"
@@ -22,7 +22,7 @@ func main() {
 	defer conn.Close()
 	c := pb.NewBlogServiceClient(conn)
 
-	createBlog(c)
+	service.CreateBlog(c)
 	// readBlog(c, id)
 	// readBlog(c, "aNonExistingID")
 	// updateBlog(c, id)
@@ -30,21 +30,21 @@ func main() {
 	// deleteBlog(c, id)
 }
 
-func createBlog(c pb.BlogServiceClient) string {
-	log.Println("---createBlog was invoked---")
+// func createBlog(c pb.BlogServiceClient) string {
+// 	log.Println("---createBlog was invoked---")
 
-	blog := &pb.Blog{
-		AuthorId: "andi ahmad",
-		Title:    "My First Blog",
-		Content:  "Content of the first blog",
-	}
+// 	blog := &pb.Blog{
+// 		AuthorId: "andi ahmad",
+// 		Title:    "My First Blog",
+// 		Content:  "Content of the first blog",
+// 	}
 
-	res, err := c.CreateBlog(context.Background(), blog)
+// 	res, err := c.CreateBlog(context.Background(), blog)
 
-	if err != nil {
-		log.Fatalf("Unexpected error: %v\n", err)
-	}
+// 	if err != nil {
+// 		log.Fatalf("Unexpected error: %v\n", err)
+// 	}
 
-	log.Printf("Blog has been created: %v\n", res)
-	return res.Id
-}
+// 	log.Printf("Blog has been created: %v\n", res)
+// 	return res.Id
+// }
