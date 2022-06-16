@@ -13,11 +13,13 @@ import (
 var mgo *mongo.Client
 var err error
 
+// collections
+
 func Init() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	mongoConn := "mongodb://admin:endi@localhost:27017/"
+	mongoConn := "mongodb://root:endi@localhost:27017/"
 	clientOptions := options.Client().ApplyURI(mongoConn).SetWriteConcern(writeconcern.New(writeconcern.W(1), writeconcern.J(false)))
 	// clientOptions := options.Client().ApplyURI(os.Getenv("MONGO")).SetWriteConcern(writeconcern.New(writeconcern.W(1), writeconcern.J(false)))
 	mgo, err = mongo.Connect(ctx, clientOptions)
@@ -31,6 +33,7 @@ func Init() {
 		panic(err)
 	}
 	// fmt.Println("mongo connect", mgo)
+	mgo.Database("blogdb").Collection("blog")
 
 }
 
