@@ -22,7 +22,10 @@ func main() {
 	defer conn.Close()
 	c := pb.NewBlogServiceClient(conn)
 
-	service.CreateBlog(c)
+	id := service.CreateBlog(c)
+
+	service.ReadBlog(c, id)
+
 	// readBlog(c, id)
 	// readBlog(c, "aNonExistingID")
 	// updateBlog(c, id)
