@@ -86,6 +86,7 @@ func getRandomJoke() {
 	if err := json.Unmarshal(responseBytes, &joke); err != nil {
 		fmt.Printf("Couuld not unmarshal response bytes %v", err)
 	}
+	// fmt.Println(joke)
 	fmt.Println(string(joke.Joke))
 }
 
@@ -138,6 +139,7 @@ func getJokeDataWithTerm(jokeTerm string) (totalJokes int, jokeList []Joke) {
 	if err := json.Unmarshal(jokeListRaw.Results, &jokes); err != nil {
 		log.Printf("Could not unmarshal reponseBytes. %v", err)
 	}
+	fmt.Println(string(jokeListRaw.Results))
 
 	return jokeListRaw.TotalJokes, jokes
 }

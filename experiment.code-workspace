@@ -17,6 +17,12 @@
 		},
 		{
 			"path": "random-joke-cli"
+		},
+		{
+			"path": "go-rabbitmq"
+		},
+		{
+			"path": "Api-test"
 		}
 	],
 	"settings": {
