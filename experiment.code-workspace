@@ -23,6 +23,9 @@
 		},
 		{
 			"path": "Api-test"
+		},
+		{
+			"path": "generic-type"
 		}
 	],
 	"settings": {
