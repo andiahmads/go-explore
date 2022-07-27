@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/domv/Code/go/src/golang-experiment'
+make: Leaving directory '/home/domv/Code/go/src/golang-experiment'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

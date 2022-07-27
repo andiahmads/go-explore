@@ -29,6 +29,12 @@
 		},
 		{
 			"path": "cron-job"
+		},
+		{
+			"path": "data-structure"
+		},
+		{
+			"path": "studybuddy"
 		}
 	],
 	"settings": {
